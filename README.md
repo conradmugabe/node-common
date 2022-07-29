@@ -26,3 +26,27 @@ const logger = WinstonLogger.getInstance(transportOptions);
 
 export default logger;
 ```
+
+### Pino Logger
+
+```typescript
+// Logger.ts
+
+// this example assumes you have installed pino-pretty as a dev-dependency
+import dayjs from dayjs;
+
+const transportOptions = {
+  transport: {
+    target: 'pino-pretty',
+  },
+  level: 'info',
+  base: {
+    pid: false,
+  },
+  timestamp: () => `"time":"${dayjs().format('YYYY-MM-DD HH:mm:ss')}"`,
+};
+
+const logger = PinoLogger.getInstance(transportOptions);
+
+export default logger;
+```
